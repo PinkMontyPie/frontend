@@ -1,0 +1,86 @@
+<div class="dashboard-container">
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <mat-card class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Total Items</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ totalItems }}</h2>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Low Stock Items</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ lowStockItems }}</h2>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="summary-card">
+        <mat-card-header>
+          <mat-card-title>Out of Stock</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>{{ outOfStockItems }}</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Recent Alerts -->
+    <mat-card class="alerts-card">
+      <mat-card-header>
+        <mat-card-title>Recent Alerts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let alert of recentAlerts">
+            <mat-icon matListItemIcon [ngStyle]="{'color': getAlertColor(alert.type)}">
+              {{ getAlertIcon(alert.type) }}
+            </mat-icon>
+            <div matListItemTitle>{{ alert.message }}</div>
+            <div matListItemLine>{{ alert.createdAt | date:'short' }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- Inventory Status Table -->
+    <mat-card class="inventory-card">
+      <mat-card-header>
+        <mat-card-title>Inventory Status</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table mat-table [dataSource]="inventoryData" class="inventory-table">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let item">{{item.name}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let item">{{item.type}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let item">{{item.availableQuantity}}/{{item.quantity}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let item">
+              <span class="status-badge" [ngClass]="getStatusClass(item.status)">
+                {{item.status}}
+              </span>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>

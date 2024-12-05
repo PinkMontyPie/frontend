@@ -1,0 +1,49 @@
+// src/app/components/inventory/inventory-detail/inventory-detail.component.scss
+.detail-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .info-item {
+    h3 {
+      color: #666;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .status-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+  
+    &.status-available {
+      background-color: #e6ffe6;
+      color: #008000;
+    }
+  
+    &.status-low_stock {
+      background-color: #fff3e6;
+      color: #ff8c00;
+    }
+  
+    &.status-out_of_stock {
+      background-color: #ffe6e6;
+      color: #ff0000;
+    }
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px;
+  }

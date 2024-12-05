@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  standalone: true,
+  imports: [RouterModule, MatToolbarModule, CommonModule],
+  template: `
+    <mat-toolbar color="primary">
+      <span>Travel Inventory Management</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Travel Inventory Management';
 }

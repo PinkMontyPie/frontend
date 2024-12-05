@@ -1,0 +1,47 @@
+// src/app/components/inventory/inventory-list/inventory-list.component.scss
+.inventory-container {
+    padding: 20px;
+  }
+  
+  .inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    h1 {
+      margin: 0;
+    }
+  }
+  
+  .search-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .inventory-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  
+    &.status-available {
+      background-color: #e6ffe6;
+      color: #008000;
+    }
+  
+    &.status-low {
+      background-color: #fff3e6;
+      color: #ff8c00;
+    }
+  
+    &.status-out {
+      background-color: #ffe6e6;
+      color: #ff0000;
+    }
+  }
